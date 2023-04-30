@@ -1,0 +1,45 @@
+1)
+a)
+update participated set dam_amt=25000 where regno='ka-47-0003' and repno=203;
+
+1 row updated.
+
+select *from participated;
+
+DID        REGNO           REPNO    DAM_AMT
+---------- ---------- ---------- ----------
+1          ka-47-0001        201       5000
+2          ka-47-0002        202       3000
+3          ka-47-0003        203      25000
+
+1)
+b)
+insert into accident values(206,'10-jun-2000','iraq');
+
+1 row created.
+
+select * from accident;
+
+     REPNO ACC_DATE  LOCATION
+---------- --------- ------------------------------
+       201 10-JAN-00 london
+       202 10-FEB-00 mexico
+       203 10-MAR-00 dubai
+       204 10-APR-00 india
+       205 10-MAY-00 iran
+       206 10-JUN-00 iraq
+
+6 rows selected.
+
+2)
+select count(*) from accident a,participated p where a.repno=p.repno and a.acc_date between '01-jan-2000' and '30-mar-2000';
+
+  COUNT(*)
+----------
+
+3)
+select count(model) from accident,car,participated where accident.repno=participated.repno and car.regno=participated.regno and car.model='nano';
+
+COUNT(DID)
+----------
+         3

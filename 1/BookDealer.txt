@@ -1,0 +1,19 @@
+1)
+select a.aid,aname,acity from author a,catalogg c where a.aid = c.aid and c.price > (select avg(price) from catalogg group by a.aid,aname,acity having count(a.aid)>1);
+
+       AID ANAME      ACITY
+---------- ---------- ----------
+         2 suhaim     shirali
+         1 ruvaim     bhatkal
+
+2)
+select aname,acity from author a,order_details o,catalogg c where a.aid = c.aid and c.bid=o.bid and o.quantity = (select max(quantity) from order_details);
+
+ANAME      ACITY
+---------- ----------
+nawaz      london
+
+3)
+update catalogg set price=price+(price*0.10) where pid=202;
+
+2 rows updated.
